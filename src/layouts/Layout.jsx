@@ -1,9 +1,14 @@
+import "../index.css";
+
 function Layout({ children }) {
   return (
-    <div style={{ padding: "20px", maxWidth: "900px", margin: "0 auto", fontFamily: "Arial, sans-serif" }}>
-      <h1 style={{ textAlign: "center", color: "#4a90e2" }}>Contact App</h1>
-      {children}
+    <div className="app-container">
+      <header className="app-header">
+        <h1>Contact APP</h1>
+      </header>
+      <main className="app-main">{children}</main>
     </div>
   );
 }
+
 export default Layout;
