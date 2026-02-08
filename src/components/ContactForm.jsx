@@ -44,48 +44,86 @@ function ContactForm({ onSubmit, contactToEdit, onCancel }) {
     outline: "none",
     width: "100%",
     boxSizing: "border-box",
+    transition: "all 0.2s ease",
   };
+
+  const buttonStyle = {
+    padding: "10px 20px",
+    fontSize: "16px",
+    borderRadius: "10px",
+    border: "none",
+    cursor: "pointer",
+    transition: "all 0.2s ease",
+    backgroundColor: "#4a90e2",
+    color: "#fff",
+  };
+
+  const buttonHover = {
+    filter: "brightness(0.9)",
+    transform: "scale(1.02)"
+  };
+
+  const [hovered, setHovered] = useState({}); 
 
   return (
     <form onSubmit={handleSubmit} style={{ marginBottom: "20px", display: "flex", flexDirection: "column", gap: "12px" }}>
       <input
-        style={inputStyle}
+        style={{ ...inputStyle }}
         placeholder="First Name"
         value={name}
         onChange={e => setName(e.target.value)}
+        onMouseEnter={e => e.currentTarget.style.borderColor = "#4a90e2"}
+        onMouseLeave={e => e.currentTarget.style.borderColor = "#ccc"}
       />
       {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
 
       <input
-        style={inputStyle}
+        style={{ ...inputStyle }}
         placeholder="Last Name"
         value={lastName}
         onChange={e => setLastName(e.target.value)}
+        onMouseEnter={e => e.currentTarget.style.borderColor = "#4a90e2"}
+        onMouseLeave={e => e.currentTarget.style.borderColor = "#ccc"}
       />
       {errors.lastName && <span style={{ color: "red" }}>{errors.lastName}</span>}
 
       <input
-        style={inputStyle}
+        style={{ ...inputStyle }}
         placeholder="Email"
         value={email}
         onChange={e => setEmail(e.target.value)}
+        onMouseEnter={e => e.currentTarget.style.borderColor = "#4a90e2"}
+        onMouseLeave={e => e.currentTarget.style.borderColor = "#ccc"}
       />
       {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
 
       <input
-        style={inputStyle}
+        style={{ ...inputStyle }}
         placeholder="Phone Number"
         value={phone}
         onChange={e => setPhone(e.target.value)}
+        onMouseEnter={e => e.currentTarget.style.borderColor = "#4a90e2"}
+        onMouseLeave={e => e.currentTarget.style.borderColor = "#ccc"}
       />
       {errors.phone && <span style={{ color: "red" }}>{errors.phone}</span>}
 
       <div style={{ display: "flex", gap: "12px" }}>
-        <button type="submit" style={{ padding: "10px 20px", fontSize: "16px", borderRadius: "10px" }}>
+        <button
+          type="submit"
+          style={buttonStyle}
+          onMouseEnter={e => Object.assign(e.currentTarget.style, buttonHover)}
+          onMouseLeave={e => Object.assign(e.currentTarget.style, { filter: "none", transform: "scale(1)" })}
+        >
           {contactToEdit ? "Edit" : "Add"}
         </button>
         {contactToEdit && (
-          <button type="button" onClick={onCancel} style={{ padding: "10px 20px", fontSize: "16px", borderRadius: "10px" }}>
+          <button
+            type="button"
+            onClick={onCancel}
+            style={{ ...buttonStyle, backgroundColor: "#888" }}
+            onMouseEnter={e => Object.assign(e.currentTarget.style, buttonHover)}
+            onMouseLeave={e => Object.assign(e.currentTarget.style, { filter: "none", transform: "scale(1)" })}
+          >
             Cancel
           </button>
         )}

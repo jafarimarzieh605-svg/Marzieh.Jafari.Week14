@@ -15,11 +15,7 @@ button {
   transition: all 0.2s ease;
 }
 
-button:hover {
-  opacity: 0.9;
-}
 
-/* ریسپانسیو ساده */
 @media (max-width: 600px) {
   .contact-card {
     flex-direction: column;
